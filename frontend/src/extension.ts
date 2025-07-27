@@ -21,10 +21,6 @@ export function activate(context: vscode.ExtensionContext) {
       const response = await axios.post('http://localhost:8000/optimize', {
         code,
         language: editor.document.languageId,
-      }, {
-        headers: {
-          'x-api-key': 'your_secure_api_key_here'
-        }
       });
 
       const optimizedCode = response.data.optimized_code;

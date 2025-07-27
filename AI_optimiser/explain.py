@@ -3,7 +3,6 @@ import io
 from fastapi import APIRouter, HTTPException, Header
 from pydantic import BaseModel
 from AI_optimiser.optimise import get_model
-from AI_optimiser.config import API_KEY
 from AI_optimiser.secure_input_logger import encrypt_input, decrypt_input, log_input
 
 router = APIRouter()
@@ -13,9 +12,7 @@ class CodeRequest(BaseModel):
     language: str = "python"
 
 @router.post("/explain")
-def explain_code(input: CodeRequest, x_api_key: str = Header(...)):
-    if x_api_key != API_KEY:
-        raise HTTPException(status_code=401, detail="Unauthorized")
+def explain_code(input: CodeRequest):
     decrypted_input = decrypt_input(input.code)
     if not decrypted_input:
         raise HTTPException(status_code=400, detail="Invalid input data")
@@ -42,9 +39,7 @@ def explain_code(input: CodeRequest, x_api_key: str = Header(...)):
 # The endpoint is protected by an API key, which must be provided in the request header.
 
 @router.post("/optimize")
-def optimize_code(input: CodeRequest, x_api_key: str = Header(...)):
-    if x_api_key != API_KEY:
-        raise HTTPException(status_code=401, detail="Unauthorized")
+def optimize_code(input: CodeRequest):
     decrypted_input = decrypt_input(input.code)
     if not decrypted_input:
         raise HTTPException(status_code=400, detail="Invalid input data")

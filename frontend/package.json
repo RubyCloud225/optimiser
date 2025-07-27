@@ -3,27 +3,30 @@
     "displayName": "Cyberpunk Code Optimizer",
     "version": "0.0.1",
     "engines": {
-      "vscode": "^1.70.0"
+        "vscode": "^1.70.0"
     },
-    "activationEvents": ["onCommand:extension.optimizeCode"],
+    "activationEvents": [
+        "onCommand:extension.optimizeCode"
+    ],
     "main": "./out/extension.js",
     "contributes": {
-      "commands": [
-        {
-          "command": "extension.optimizeCode",
-          "title": "Optimize Code with AI"
-        }
-      ]
+        "commands": [
+            {
+                "command": "extension.optimizeCode",
+                "title": "Optimize Code with AI"
+            }
+        ]
     },
     "scripts": {
-      "compile": "tsc -p ./"
+        "compile": "tsc -p ./tsconfig.json"
     },
     "devDependencies": {
-      "@types/vscode": "^1.70.0",
-      "typescript": "^5.0.0",
-      "@vscode/test-electron": "^2.3.0"
+        "@types/vscode": "^1.102.0",
+        "@vscode/test-electron": "^2.3.0",
+        "typescript": "^5.8.3",
+        "vscode": "^1.1.37"
     },
     "dependencies": {
-      "axios": "^1.4.0"
+        "axios": "^1.4.0"
     }
-  }
+}

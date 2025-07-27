@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cyberpunk Code Optimizer</title>
+  <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css');
+    body {
+      margin: 0; padding: 1rem;
+      background: #0f0f1a;
+      color: #f0f0f7;
+      font-family: 'Courier New', Courier, monospace;
+      user-select: text;
+      height: 100vh;
+    }
+    h2 {
+      color: #ff007f;
+      text-shadow: 0 0 10px #ff007f;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    pre {
+      background: linear-gradient(45deg, #1f0037, #0f001a);
+      padding: 1rem;
+      border-radius: 10px;
+      overflow-x: auto;
+      box-shadow: 0 0 15px #ff00bf;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    /* Neon glow effect on code */
+    code {
+      color: #ff79c6;
+      text-shadow:
+        0 0 5px #ff79c6,
+        0 0 10px #ff79c6,
+        0 0 20px #ff79c6;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</head>
+<body>
+  <h2>Optimized Code</h2>
+  <pre><code class="language-python" id="code-block"></code></pre>
+
+  <script>
+    const vscode = acquireVsCodeApi(); // for future message passing
+
+    // Replace with your optimized code string from extension
+    const optimizedCode = `# Your optimized code will be injected here`;
+
+    // Escape HTML entities
+    function escapeHtml(unsafe) {
+      return unsafe.replace(/[&<>"']/g, function(m) {
+        return ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        })[m];
+      });
+    }
+
+    const codeBlock = document.getElementById('code-block');
+    codeBlock.innerHTML = Prism.highlight(escapeHtml(optimizedCode), Prism.languages.python, 'python');
+  </script>
+</body>
+</html>

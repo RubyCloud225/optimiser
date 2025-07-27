@@ -1,9 +1,9 @@
 import pytest
 from fastapi.testclient import TestClient
 from fastapi import FastAPI
-from AI_optimiser.explain import router
-from AI_optimiser.config import API_KEY
-from AI_optimiser.secure_input_logger import encrypt_input
+from explain import router
+from config import API_KEY
+from secure_input_logger import encrypt_input
 
 app = FastAPI()
 app.include_router(router)
